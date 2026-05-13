@@ -3,56 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ashraful Joy | Premium Portfolio</title>
+    <title>Ashraful Joy | Professional Portfolio</title>
     <style>
         :root {
             --bg: #f8fafc;
-            --card-bg: rgba(255, 255, 255, 0.8);
+            --card-bg: rgba(255, 255, 255, 0.85);
             --text: #0f172a;
-            --accent: #3b82f6;
+            --accent-gradient: linear-gradient(45deg, #f06, #4a90e2, #2ecc71);
             --shadow: rgba(0, 0, 0, 0.1);
         }
 
         [data-theme="dark"] {
             --bg: #020617;
-            --card-bg: rgba(30, 41, 59, 0.7);
+            --card-bg: rgba(30, 41, 59, 0.75);
             --text: #f1f5f9;
-            --accent: #60a5fa;
             --shadow: rgba(0, 0, 0, 0.5);
         }
 
         body {
             margin: 0;
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-family: 'Inter', sans-serif;
             background: var(--bg);
             color: var(--text);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            overflow-x: hidden;
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        /* Animated Background Glow */
-        body::before {
-            content: "";
-            position: fixed;
-            top: -50%; left: -50%; width: 200%; height: 200%;
-            background: radial-gradient(circle, var(--accent) 0%, transparent 20%);
-            opacity: 0.05;
-            z-index: -1;
-            animation: move 10s infinite linear;
-        }
-
-        @keyframes move { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
+        /* Nav Style */
         .nav {
             display: flex;
             justify-content: space-between;
             padding: 20px;
             position: sticky;
             top: 0;
-            backdrop-filter: blur(10px);
             z-index: 100;
         }
 
@@ -64,53 +50,71 @@
             border-radius: 12px;
             cursor: pointer;
             display: grid; place-items: center;
-            font-size: 1.2rem;
             box-shadow: 0 4px 12px var(--shadow);
             transition: 0.3s;
         }
 
-        .btn-icon:active { transform: scale(0.9); }
-
+        /* Profile Section */
         .container {
             flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px;
+            padding: 10px 20px 40px;
             max-width: 450px;
             margin: 0 auto;
             width: 90%;
         }
 
-        .profile-section {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
         .profile-img {
             width: 130px; height: 130px;
-            border-radius: 40px; /* Squircle shape */
+            border-radius: 35px;
             object-fit: cover;
             border: 4px solid var(--card-bg);
             box-shadow: 0 20px 40px var(--shadow);
-            transform: rotate(-3deg);
-            transition: 0.5s;
+            animation: float 4s ease-in-out infinite;
         }
 
-        .profile-img:hover { transform: rotate(0deg) scale(1.05); }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(-2deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+        }
 
-        h1 { font-size: 1.8rem; margin: 15px 0 5px; font-weight: 800; }
-        .tagline { opacity: 0.7; font-size: 0.9rem; margin-bottom: 20px; letter-spacing: 1px; }
+        /* Stylish Gradient Name */
+        .stylish-name {
+            font-size: 2.2rem;
+            font-weight: 900;
+            margin: 15px 0 5px;
+            background: linear-gradient(90deg, #ff0055, #4a90e2, #2ecc71, #ff0055);
+            background-size: 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientMove 5s linear infinite;
+        }
 
+        @keyframes gradientMove {
+            0% { background-position: 0%; }
+            100% { background-position: 100%; }
+        }
+
+        /* Typing Animation for Roles */
+        .typing-text {
+            font-weight: 600;
+            color: #64748b;
+            font-size: 1rem;
+            min-height: 24px;
+            margin-bottom: 30px;
+        }
+
+        /* Animated Link Cards */
         .links-grid { width: 100%; display: grid; gap: 15px; }
 
         .link-card {
             background: var(--card-bg);
             backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255,255,255,0.1);
             padding: 16px 20px;
-            border-radius: 18px;
+            border-radius: 20px;
             display: flex;
             align-items: center;
             text-decoration: none;
@@ -118,39 +122,38 @@
             font-weight: 600;
             transition: 0.3s;
             box-shadow: 0 4px 15px var(--shadow);
+            animation: slideIn 0.5s ease backwards;
         }
 
         .link-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--accent);
-            box-shadow: 0 10px 25px var(--shadow);
+            transform: scale(1.03);
+            border-color: #4a90e2;
         }
 
-        .link-card i {
-            font-size: 1.5rem;
-            margin-right: 15px;
-            width: 30px;
-            text-align: center;
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Menu Sidebar */
+        .link-card i { font-size: 1.4rem; margin-right: 15px; width: 25px; text-align: center; }
+
+        /* Menu Drawer */
         #menu-drawer {
             position: fixed;
             bottom: -100%; left: 0; width: 100%;
-            background: var(--container-bg);
             background: var(--card-bg);
             backdrop-filter: blur(20px);
             border-radius: 30px 30px 0 0;
             padding: 40px 20px;
-            transition: 0.5s;
+            transition: 0.5s ease;
             z-index: 200;
             text-align: center;
             box-shadow: 0 -10px 40px rgba(0,0,0,0.2);
         }
 
         #menu-drawer.active { bottom: 0; }
+        .close-btn { color: #f06; font-weight: bold; margin-top: 25px; cursor: pointer; }
 
-        .close-menu { margin-top: 20px; color: var(--accent); cursor: pointer; font-weight: bold; }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -158,69 +161,80 @@
 
     <nav class="nav">
         <button class="btn-icon" id="theme-btn"><i class="fas fa-moon"></i></button>
-        <button class="btn-icon" id="menu-btn"><i class="fas fa-ellipsis-h"></i></button>
+        <button class="btn-icon" id="menu-btn"><i class="fas fa-bars"></i></button>
     </nav>
 
     <div class="container">
-        <div class="profile-section">
-            <img src="https://raw.githubusercontent.com/ashrafuljoy62/index.html/WiFu/IMG-20251227-WA0018.jpg" alt="Joy" class="profile-img">
-            <h1>Ashraful Joy</h1>
-            <p class="tagline">DEVELOPER & CREATIVE EDITOR</p>
-        </div>
+        <img src="https://raw.githubusercontent.com/ashrafuljoy62/index.html/WiFu/IMG-20251227-WA0018.jpg" alt="Joy" class="profile-img">
+        
+        <div class="stylish-name">Ashraful Joy</div>
+        
+        <div class="typing-text" id="typing-box"></div>
 
         <div class="links-grid">
-            <a href="https://m.facebook.com/ashrafulalam05" class="link-card" target="_blank">
+            <a href="https://m.facebook.com/ashrafulalam05" class="link-card" style="animation-delay: 0.1s;">
                 <i class="fab fa-facebook" style="color: #1877f2;"></i> Facebook
             </a>
-            <a href="https://www.instagram.com/firefighter.joy" class="link-card" target="_blank">
+            <a href="https://www.instagram.com/firefighter.joy" class="link-card" style="animation-delay: 0.2s;">
                 <i class="fab fa-instagram" style="color: #e4405f;"></i> Instagram
             </a>
-            <a href="https://t.me/premium_master_62" class="link-card" target="_blank">
+            <a href="https://t.me/premium_master_62" class="link-card" style="animation-delay: 0.3s;">
                 <i class="fab fa-telegram" style="color: #0088cc;"></i> Telegram
             </a>
-            <a href="https://t.me/movieallpremium" class="link-card" target="_blank">
-                <i class="fas fa-layer-group" style="color: #229ED9;"></i> Movie Channel
+            <a href="https://t.me/movieallpremium" class="link-card" style="animation-delay: 0.4s;">
+                <i class="fas fa-film" style="color: #229ED9;"></i> Movie Channel
             </a>
-            <a href="https://www.tiktok.com/@fire.fighter.joy" class="link-card" target="_blank">
+            <a href="https://www.tiktok.com/@fire.fighter.joy" class="link-card" style="animation-delay: 0.5s;">
                 <i class="fab fa-tiktok"></i> TikTok
             </a>
-            <a href="https://youtube.com/@ashraful_creation" class="link-card" target="_blank">
+            <a href="https://youtube.com/@ashraful_creation" class="link-card" style="animation-delay: 0.6s;">
                 <i class="fab fa-youtube" style="color: #ff0000;"></i> YouTube
             </a>
         </div>
     </div>
 
     <div id="menu-drawer">
-        <h3>Quick Menu</h3>
-        <p>Email: contact@ashrafuljoy.pro.bd</p>
-        <p>Location: Dinajpur, Bangladesh</p>
-        <div class="close-menu" id="close-btn">Close</div>
+        <h3>Contact Info</h3>
+        <p><i class="fas fa-envelope"></i> ashrafulalamjoy003@gmail.com</p>
+        <p><i class="fas fa-location-dot"></i> Dinajpur, Bangladesh</p>
+        <div class="close-btn" id="close-btn">Close</div>
     </div>
 
     <script>
+        // Typing Animation
+        const roles = ["Firefighter", "Web Designer", "Developer", "Creative Editor"];
+        let count = 0;
+        let index = 0;
+        let currentText = "";
+        let letter = "";
+
+        (function type() {
+            if (count === roles.length) count = 0;
+            currentText = roles[count];
+            letter = currentText.slice(0, ++index);
+            document.querySelector("#typing-box").textContent = letter;
+            if (letter.length === currentText.length) {
+                count++;
+                index = 0;
+                setTimeout(type, 2000); // Wait at end
+            } else {
+                setTimeout(type, 100);
+            }
+        }());
+
         // Theme Toggle
         const themeBtn = document.getElementById('theme-btn');
-        const body = document.body;
-        
         themeBtn.onclick = () => {
-            const isDark = body.getAttribute('data-theme') === 'dark';
-            body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            const isDark = document.body.getAttribute('data-theme') === 'dark';
+            document.body.setAttribute('data-theme', isDark ? 'light' : 'dark');
             themeBtn.innerHTML = isDark ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
             localStorage.setItem('theme', isDark ? 'light' : 'dark');
         };
 
-        if(localStorage.getItem('theme') === 'dark') {
-            body.setAttribute('data-theme', 'dark');
-            themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
-        }
-
-        // Menu Toggle
-        const menuBtn = document.getElementById('menu-btn');
+        // Drawer
         const drawer = document.getElementById('menu-drawer');
-        const closeBtn = document.getElementById('close-btn');
-
-        menuBtn.onclick = () => drawer.classList.add('active');
-        closeBtn.onclick = () => drawer.classList.remove('active');
+        document.getElementById('menu-btn').onclick = () => drawer.classList.add('active');
+        document.getElementById('close-btn').onclick = () => drawer.classList.remove('active');
     </script>
 </body>
 </html>
