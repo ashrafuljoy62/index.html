@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ashraful Joy | Bio Link</title>
+    <title>Ashraful Joy | Premium Bio</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Poppins:wght@400;600&display=swap');
 
         :root {
             --bg: #f3f4f6;
             --card-bg: rgba(255, 255, 255, 0.8);
             --text: #1f2937;
-            --accent: #3b82f6;
         }
 
         [data-theme="dark"] {
-            --bg: #0f172a;
+            --bg: #0b0f1a;
             --card-bg: rgba(30, 41, 59, 0.7);
             --text: #f3f4f6;
         }
@@ -28,28 +27,7 @@
             display: flex; 
             justify-content: center; 
             min-height: 100vh;
-            transition: background 0.5s ease;
-        }
-
-        .nav {
-            position: fixed;
-            top: 0;
-            width: 90%;
-            max-width: 400px;
-            display: flex;
-            justify-content: space-between;
-            padding: 20px;
-            z-index: 100;
-        }
-
-        .btn-icon {
-            background: var(--card-bg);
-            border: 1px solid rgba(0,0,0,0.05);
-            color: var(--text);
-            width: 42px; height: 42px;
-            border-radius: 12px;
-            cursor: pointer;
-            backdrop-filter: blur(10px);
+            transition: 0.5s ease;
         }
 
         .container { 
@@ -57,168 +35,156 @@
             max-width: 400px; 
             text-align: center; 
             margin-top: 80px;
-            padding-bottom: 50px;
         }
 
-        /* বাকা এবং দোদুল্যমান ছবি */
+        /* ছবি বাকা এবং দুলবে */
         .profile-img { 
-            width: 130px; 
-            height: 130px; 
+            width: 135px; height: 135px; 
             border-radius: 35px; 
             object-fit: cover; 
             border: 4px solid white; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1); 
-            margin-bottom: 20px;
-            transform: rotate(-7deg); /* হালকা বাকা */
-            animation: elegantFloat 4s ease-in-out infinite;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1); 
+            transform: rotate(-6deg);
+            animation: slowFloat 4s ease-in-out infinite;
         }
 
-        @keyframes elegantFloat {
-            0%, 100% { transform: rotate(-7deg) translateY(0); }
-            50% { transform: rotate(-3deg) translateY(-12px); }
+        @keyframes slowFloat {
+            0%, 100% { transform: rotate(-6deg) translateY(0); }
+            50% { transform: rotate(-2deg) translateY(-10px); }
         }
 
-        /* ১ লাইনে স্পেশাল ফন্ট নাম */
-        .special-name {
-            font-family: 'Dancing Script', cursive; /* স্পেশাল ফন্ট */
-            font-size: 2.5rem;
-            margin: 10px 0;
-            background: linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899);
+        /* নরমালের মধ্যে গর্জিয়াস নাম */
+        .gorgeous-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            margin: 15px 0 5px;
+            background: linear-gradient(to right, #1e3a8a, #3b82f6, #9333ea);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            white-space: nowrap; /* এক লাইনে রাখবে */
+            text-transform: uppercase;
         }
 
-        .role-text {
-            font-size: 14px;
+        /* "I am" স্থির, বাকিটা অ্যানিমেটেড */
+        .role-container {
+            font-size: 1.1rem;
             font-weight: 600;
-            letter-spacing: 1px;
+            margin-bottom: 35px;
             color: #6b7280;
-            margin-bottom: 30px;
-            height: 20px;
         }
 
-        .links-list { width: 100%; }
-        
+        .static-iam { color: var(--text); opacity: 0.8; }
+
+        .dynamic-role {
+            color: #ef4444; /* ডিফল্ট কালার */
+            border-right: 2px solid;
+            padding-left: 5px;
+        }
+
         .link-card { 
             display: flex; 
             align-items: center; 
             background: var(--card-bg); 
             color: var(--text); 
-            padding: 15px 20px; 
+            padding: 16px 20px; 
             margin-bottom: 12px; 
-            border-radius: 15px; 
+            border-radius: 18px; 
             text-decoration: none; 
-            font-weight: 600; 
-            border: 1px solid rgba(255,255,255,0.1); 
+            font-weight: 700; 
             backdrop-filter: blur(10px);
-            transition: 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.3s;
         }
 
-        .link-card:hover { 
-            transform: scale(1.02); 
-            background: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        }
+        .link-card:hover { transform: translateY(-3px) scale(1.02); background: white; }
 
-        .link-card i { font-size: 20px; margin-right: 15px; width: 25px; text-align: center; }
+        .link-card i { font-size: 22px; margin-right: 15px; width: 30px; text-align: center; }
 
-        /* Bottom Menu */
-        #menu-drawer {
-            position: fixed;
-            bottom: -100%; left: 0; width: 100%;
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            border-radius: 25px 25px 0 0;
-            padding: 30px;
-            transition: 0.5s;
-            z-index: 200;
-            text-align: center;
-        }
-
-        #menu-drawer.active { bottom: 0; }
-        .close-btn { margin-top: 20px; color: #ef4444; cursor: pointer; font-weight: bold; }
+        /* Icons & Nav */
+        .nav-btns { position: fixed; top: 20px; width: 90%; max-width: 400px; display: flex; justify-content: space-between; }
+        .btn-icon { background: var(--card-bg); border: none; width: 40px; height: 40px; border-radius: 10px; color: var(--text); cursor: pointer; }
 
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-    <div class="nav">
-        <button class="btn-icon" id="theme-btn"><i class="fas fa-moon"></i></button>
-        <button class="btn-icon" id="menu-btn"><i class="fas fa-ellipsis-v"></i></button>
+    <div class="nav-btns">
+        <button class="btn-icon" id="theme-btn"><i class="fas fa-adjust"></i></button>
+        <button class="btn-icon" onclick="document.getElementById('menu').classList.toggle('active')"><i class="fas fa-bars"></i></button>
     </div>
 
     <div class="container">
         <img src="https://raw.githubusercontent.com/ashrafuljoy62/index.html/WiFu/IMG-20251227-WA0018.jpg" alt="Joy" class="profile-img">
         
-        <div class="special-name">Ashraful Joy</div>
-        <div class="role-text" id="type-role"></div>
+        <div class="gorgeous-name">Ashraful Joy</div>
+        
+        <div class="role-container">
+            <span class="static-iam">I am </span>
+            <span class="dynamic-role" id="role-text"></span>
+        </div>
 
         <div class="links-list">
-            <a href="https://m.facebook.com/ashrafulalam05" class="link-card" target="_blank"><i class="fab fa-facebook" style="color: #1877f2;"></i> Facebook</a>
-            <a href="https://www.instagram.com/firefighter.joy" class="link-card" target="_blank"><i class="fab fa-instagram" style="color: #e4405f;"></i> Instagram</a>
-            <a href="https://t.me/premium_master_62" class="link-card" target="_blank"><i class="fab fa-telegram" style="color: #0088cc;"></i> Telegram</a>
-            <a href="https://t.me/movieallpremium" class="link-card" target="_blank"><i class="fas fa-film" style="color: #229ED9;"></i> Movies</a>
-            <a href="https://www.tiktok.com/@fire.fighter.joy" class="link-card" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
-            <a href="https://youtube.com/@ashraful_creation" class="link-card" target="_blank"><i class="fab fa-youtube" style="color: #ff0000;"></i> YouTube</a>
+            <a href="https://m.facebook.com/ashrafulalam05" class="link-card"><i class="fab fa-facebook" style="color: #1877f2;"></i> Facebook</a>
+            <a href="https://www.instagram.com/firefighter.joy" class="link-card"><i class="fab fa-instagram" style="color: #e4405f;"></i> Instagram</a>
+            <a href="https://t.me/premium_master_62" class="link-card"><i class="fab fa-telegram" style="color: #0088cc;"></i> Telegram</a>
+            <a href="https://t.me/movieallpremium" class="link-card"><i class="fas fa-video" style="color: #229ED9;"></i> Movie Channel</a>
+            <a href="https://www.tiktok.com/@fire.fighter.joy" class="link-card"><i class="fab fa-tiktok"></i> TikTok</a>
+            <a href="https://youtube.com/@ashraful_creation" class="link-card"><i class="fab fa-youtube" style="color: #ff0000;"></i> YouTube</a>
         </div>
     </div>
 
-    <div id="menu-drawer">
-        <h3>Contact</h3>
-        <p>Email: ashrafulalamjoy003@gmail.com</p>
-        <p>Location: Dinajpur, Bangladesh</p>
-        <div class="close-btn" id="close-btn">Close</div>
-    </div>
-
     <script>
-        // Typing Animation
-        const roles = ["Firefighter", "Web Designer", "Developer", "Creative Editor"];
-        let rIndex = 0; let charIndex = 0;
-        const target = document.getElementById("type-role");
+        // পদবী অ্যানিমেশন
+        const roles = [
+            { text: "Firefighter", color: "#f87171" },
+            { text: "Web Designer", color: "#60a5fa" },
+            { text: "Developer", color: "#34d399" },
+            { text: "Creative Editor", color: "#fbbf24" }
+        ];
+
+        let roleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const roleSpan = document.getElementById("role-text");
 
         function type() {
-            if (charIndex < roles[rIndex].length) {
-                target.textContent += roles[rIndex].charAt(charIndex);
-                charIndex++;
-                setTimeout(type, 100);
-            } else {
-                setTimeout(erase, 2000);
-            }
-        }
+            const currentRole = roles[roleIndex];
+            roleSpan.style.color = currentRole.color;
 
-        function erase() {
-            if (charIndex > 0) {
-                target.textContent = roles[rIndex].substring(0, charIndex - 1);
+            if (isDeleting) {
+                roleSpan.textContent = currentRole.text.substring(0, charIndex - 1);
                 charIndex--;
-                setTimeout(erase, 50);
             } else {
-                rIndex = (rIndex + 1) % roles.length;
-                setTimeout(type, 500);
+                roleSpan.textContent = currentRole.text.substring(0, charIndex + 1);
+                charIndex++;
             }
+
+            let typeSpeed = isDeleting ? 50 : 150;
+
+            if (!isDeleting && charIndex === currentRole.text.length) {
+                typeSpeed = 2000; // শেষে ২ সেকেন্ড থামবে
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                roleIndex = (roleIndex + 1) % roles.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(type, typeSpeed);
         }
 
         document.addEventListener("DOMContentLoaded", type);
 
-        // Theme
+        // ডার্ক মোড
         const themeBtn = document.getElementById('theme-btn');
         themeBtn.onclick = () => {
-            const isDark = document.body.getAttribute('data-theme') === 'dark';
-            document.body.setAttribute('data-theme', isDark ? 'light' : 'dark');
-            themeBtn.innerHTML = isDark ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
-            localStorage.setItem('theme', isDark ? 'light' : 'dark');
+            const current = document.body.getAttribute('data-theme');
+            document.body.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+            localStorage.setItem('theme', current === 'dark' ? 'light' : 'dark');
         };
-
-        if(localStorage.getItem('theme') === 'dark') {
-            document.body.setAttribute('data-theme', 'dark');
-            themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
-        }
-
-        // Drawer
-        const drawer = document.getElementById('menu-drawer');
-        document.getElementById('menu-btn').onclick = () => drawer.classList.add('active');
-        document.getElementById('close-btn').onclick = () => drawer.classList.remove('active');
+        if(localStorage.getItem('theme') === 'dark') document.body.setAttribute('data-theme', 'dark');
     </script>
 </body>
 </html>
