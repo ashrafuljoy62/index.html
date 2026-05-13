@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ashraful Joy | Professional Portfolio</title>
+    <title>Ashraful Joy | Portfolio</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@300;400;600&display=swap');
 
@@ -32,6 +32,7 @@
             scroll-behavior: smooth;
         }
 
+        /* Header & Nav Controls */
         header {
             position: fixed;
             top: 0; width: 100%;
@@ -50,18 +51,19 @@
             background: var(--card);
             border: 1px solid rgba(255,255,255,0.1);
             color: var(--text);
-            width: 40px; height: 40px;
+            width: 42px; height: 42px;
             border-radius: 12px;
             cursor: pointer;
             display: flex; align-items: center; justify-content: center;
         }
 
-        /* Side Nav - Fixed as per 6866.jpg feedback */
+        /* Side Navigation Styling (Image 6866.jpg reference) */
         .side-nav {
             position: fixed; top: 0; right: -100%;
             width: 280px; height: 100%;
             background: var(--card);
-            z-index: 2000; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 2000; 
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex; flex-direction: column;
             box-shadow: -10px 0 30px rgba(0,0,0,0.5);
         }
@@ -71,64 +73,66 @@
             margin-top: 80px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
         }
         .nav-links a {
-            padding: 15px 30px;
+            padding: 18px 35px;
             text-decoration: none;
             color: var(--dim);
             font-weight: 600;
             font-size: 1.1rem;
             transition: 0.3s;
-            border-left: 4px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
         }
         .nav-links a:hover {
             color: var(--accent);
-            background: rgba(56, 189, 248, 0.1);
-            border-left: 4px solid var(--accent);
+            background: rgba(56, 189, 248, 0.08);
+            padding-left: 45px;
         }
 
-        .hero { text-align: center; padding: 120px 20px 40px; }
-        .profile-img {
-            width: 130px; height: 130px; border-radius: 35px;
-            object-fit: cover; border: 4px solid var(--accent);
-            transform: rotate(-6deg); animation: float 4s ease-in-out infinite;
-        }
-        @keyframes float { 0%, 100% { transform: rotate(-6deg) translateY(0); } 50% { transform: rotate(-2deg) translateY(-10px); } }
-
-        /* Contact Section */
-        .contact-section { max-width: 600px; margin: 60px auto; padding: 20px; }
-        .contact-card {
-            background: var(--card);
-            padding: 30px; border-radius: 25px;
+        /* Info Sections Styling */
+        .section-container { max-width: 600px; margin: 40px auto; padding: 20px; }
+        
+        .info-table { 
+            background: var(--card); 
+            border-radius: 20px; 
+            padding: 10px 25px; 
             border: 1px solid rgba(255,255,255,0.05);
         }
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(156, 163, 175, 0.1);
+        }
+        .info-row:last-child { border-bottom: none; }
+        .label { color: var(--dim); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; }
+        .val { font-weight: 500; }
+
+        /* Social Icons */
         .social-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 30px;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 20px;
         }
-        .social-item {
-            background: var(--bg); padding: 12px; border-radius: 12px;
+        .social-box {
+            background: var(--bg); padding: 15px; border-radius: 15px;
             text-align: center; color: var(--text); text-decoration: none;
-            font-size: 0.8rem; font-weight: 600; transition: 0.3s;
+            transition: 0.3s; font-size: 0.85rem; border: 1px solid rgba(255,255,255,0.05);
         }
-        .social-item:hover { background: var(--accent); color: white; transform: translateY(-3px); }
+        .social-box:hover { background: var(--accent); color: white; transform: translateY(-5px); }
 
         /* Form Styling */
         .contact-form input, .contact-form textarea {
             width: 100%; background: var(--bg); border: 1px solid rgba(156,163,175,0.2);
             padding: 15px; border-radius: 12px; color: var(--text);
             margin-bottom: 15px; outline: none; box-sizing: border-box;
-            font-family: inherit;
         }
         .send-btn {
             background: var(--accent); color: white; border: none;
             padding: 15px; border-radius: 12px; width: 100%;
             font-weight: 700; cursor: pointer; transition: 0.3s;
-            display: flex; align-items: center; justify-content: center; gap: 10px;
         }
-        .send-btn:hover { opacity: 0.9; transform: scale(0.98); }
-
-        footer { text-align: center; padding: 40px; color: var(--dim); font-size: 0.8rem; }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -142,89 +146,63 @@
         </div>
     </header>
 
+    <!-- Side Navigation (Linked as per your request) -->
     <nav class="side-nav" id="sideNav">
-        <div style="text-align: right; padding: 20px;"><i class="fas fa-times" onclick="toggleMenu()" style="cursor:pointer; color: var(--dim);"></i></div>
+        <div style="text-align: right; padding: 20px;"><i class="fas fa-times" onclick="toggleMenu()" style="cursor:pointer; color: var(--dim); font-size: 1.5rem;"></i></div>
         <div class="nav-links">
-            <a href="#"><i class="fas fa-home"></i> Home</a>
-            <a href="#about"><i class="fas fa-user"></i> About Me</a>
-            <a href="#"><i class="fas fa-code"></i> Services</a>
-            <a href="#"><i class="fas fa-tasks"></i> Projects</a>
-            <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+            <a href="#" onclick="toggleMenu()"><i class="fas fa-home"></i> Home</a>
+            <a href="#about-me" onclick="toggleMenu()"><i class="fas fa-user-circle"></i> About Me</a>
+            <a href="#contact" onclick="toggleMenu()"><i class="fas fa-paper-plane"></i> Contact</a>
+            <a href="https://github.com/ashrafuljoy62" onclick="toggleMenu()"><i class="fas fa-folder-open"></i> Projects</a>
         </div>
     </nav>
 
-    <div class="hero">
-        <img src="https://raw.githubusercontent.com/ashrafuljoy62/index.html/WiFu/IMG-20251227-WA0018.jpg" alt="Joy" class="profile-img">
-        <h1 style="font-family: 'Montserrat'; font-weight: 900; font-size: 2rem; margin: 20px 0;">Ashraful Alam Joy</h1>
-        <p style="color: var(--accent); font-weight: 600;">I Am A <span id="typing"></span></p>
+    <!-- Hero -->
+    <div style="text-align: center; padding: 120px 20px 20px;">
+        <img src="https://raw.githubusercontent.com/ashrafuljoy62/index.html/WiFu/IMG-20251227-WA0018.jpg" style="width:130px; height:130px; border-radius:35px; border:4px solid var(--accent); transform:rotate(-6deg);" alt="Joy">
+        <h1 style="font-family:'Montserrat'; margin: 20px 0 5px;">Ashraful Alam Joy</h1>
+        <p style="color:var(--dim);">Government Employee | Developer</p>
     </div>
 
-    <!-- Contact Section -->
-    <section class="contact-section" id="contact">
-        <div style="text-align: center; margin-bottom: 30px;">
-            <h2 style="font-family: 'Montserrat'; font-size: 1.8rem; margin: 0;">Connect With Me</h2>
-            <p style="color: var(--dim);">Let's build something amazing together!</p>
+    <!-- About Me Section -->
+    <section id="about-me" class="section-container">
+        <h3 style="text-align: center; font-family: 'Montserrat';"><i class="fas fa-user-tie"></i> Profile Details</h3>
+        <div class="info-table">
+            <div class="info-row"><span class="label">Name</span><span class="val">Ashraful Alam Joy</span></div>
+            <div class="info-row"><span class="label">Age</span><span class="val">23 Years</span></div>
+            <div class="info-row"><span class="label">Religion</span><span class="val">Islam</span></div>
+            <div class="info-row"><span class="label">Occupation</span><span class="val">Government Employee</span></div>
+            <div class="info-row"><span class="label">Location</span><span class="val"><a href="https://www.google.com/maps/search/Dinajpur,Bangladesh" style="color:var(--accent); text-decoration:none;">Dinajpur, BD <i class="fas fa-map-marker-alt"></i></a></span></div>
         </div>
+    </section>
 
-        <div class="contact-card">
-            <!-- Social Links -->
-            <div class="social-grid">
-                <a href="https://m.facebook.com/ashrafulalam05" class="social-item"><i class="fab fa-facebook"></i><br>FB</a>
-                <a href="https://t.me/premium_master_62" class="social-item"><i class="fab fa-telegram"></i><br>TG</a>
-                <a href="https://www.instagram.com/firefighter.joy" class="social-item"><i class="fab fa-instagram"></i><br>IG</a>
-                <a href="https://github.com/ashrafuljoy62" class="social-item"><i class="fab fa-github"></i><br>GH</a>
-                <a href="https://youtube.com/@ashraful_creation" class="social-item"><i class="fab fa-youtube"></i><br>YT</a>
-                <a href="mailto:ashrafulalamjoy003@gmail.com" class="social-item"><i class="fas fa-envelope"></i><br>Mail</a>
-            </div>
-
-            <!-- Contact Form -->
-            <!-- Note: Replace 'YOUR_FORM_ID' with your Formspree ID to receive emails -->
-            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="contact-form">
+    <!-- Contact Section -->
+    <section id="contact" class="section-container">
+        <h3 style="text-align: center; font-family: 'Montserrat';"><i class="fas fa-comments"></i> Get In Touch</h3>
+        <div class="social-grid">
+            <a href="https://m.facebook.com/ashrafulalam05" class="social-box"><i class="fab fa-facebook"></i><br>Facebook</a>
+            <a href="https://t.me/premium_master_62" class="social-box"><i class="fab fa-telegram"></i><br>Telegram</a>
+            <a href="mailto:ashrafulalamjoy003@gmail.com" class="social-box"><i class="fas fa-envelope"></i><br>Email</a>
+        </div>
+        
+        <div style="margin-top: 30px; background: var(--card); padding: 25px; border-radius: 20px;">
+            <form action="https://formspree.io/f/YOUR_ID" method="POST" class="contact-form">
                 <input type="text" name="name" placeholder="Full Name" required>
-                <input type="email" name="email" placeholder="Your Email Address" required>
-                <input type="text" name="subject" placeholder="Subject">
-                <textarea name="message" rows="5" placeholder="Write your details here..." required></textarea>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <textarea name="message" rows="4" placeholder="Your Message..." required></textarea>
                 <button type="submit" class="send-btn">Send Message <i class="fas fa-paper-plane"></i></button>
             </form>
         </div>
     </section>
 
-    <footer>
-        <p>Built with ❤️ by Ashraful Joy</p>
-        <p>&copy; 2026 All Rights Reserved.</p>
-    </footer>
-
     <script>
-        // Typing Animation
-        const roles = [
-            { text: "Firefighter", color: "#f87171" },
-            { text: "Developer", color: "#60a5fa" },
-            { text: "Web Designer", color: "#34d399" }
-        ];
-        let rI = 0, cI = 0, isD = false;
-        const el = document.getElementById("typing");
-
-        function type() {
-            const current = roles[rI];
-            el.style.color = current.color;
-            el.textContent = current.text.substring(0, cI + (isD ? -1 : 1));
-            cI += isD ? -1 : 1;
-            let s = isD ? 60 : 150;
-            if(!isD && cI === current.text.length) { s = 2000; isD = true; }
-            else if(isD && cI === 0) { isD = false; rI = (rI + 1) % roles.length; s = 500; }
-            setTimeout(type, s);
-        }
-
-        // Theme Toggle
+        function toggleMenu() { document.getElementById('sideNav').classList.toggle('active'); }
+        
         document.getElementById('theme-toggle').onclick = function() {
-            const body = document.body;
-            const isDark = body.getAttribute('data-theme') === 'dark';
-            body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            const isDark = document.body.getAttribute('data-theme') === 'dark';
+            document.body.setAttribute('data-theme', isDark ? 'light' : 'dark');
             this.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
         };
-
-        function toggleMenu() { document.getElementById('sideNav').classList.toggle('active'); }
-        document.addEventListener("DOMContentLoaded", type);
     </script>
 </body>
 </html>
