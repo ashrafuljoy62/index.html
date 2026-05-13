@@ -3,27 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ashraful Joy | Professional Portfolio</title>
+    <title>Ashraful Joy | Official Portfolio</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@300;400;600&display=swap');
 
         :root {
-            --dark-bg: #0b1120;
-            --card-bg: #111827;
+            --bg: #0b1120;
+            --card: #111827;
+            --text: #f3f4f6;
+            --dim: #9ca3af;
             --accent: #38bdf8;
-            --text-main: #f3f4f6;
-            --text-dim: #9ca3af;
+        }
+
+        [data-theme="light"] {
+            --bg: #f3f4f6;
+            --card: #ffffff;
+            --text: #1f2937;
+            --dim: #6b7280;
+            --accent: #2563eb;
         }
 
         body {
             margin: 0;
-            background-color: var(--dark-bg);
-            color: var(--text-main);
+            background-color: var(--bg);
+            color: var(--text);
             font-family: 'Poppins', sans-serif;
+            transition: 0.3s ease;
             scroll-behavior: smooth;
         }
 
-        /* Header & Nav */
+        /* Header */
         header {
             position: fixed;
             top: 0; width: 100%;
@@ -31,84 +40,32 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(11, 17, 32, 0.8);
+            background: rgba(var(--bg), 0.8);
             backdrop-filter: blur(10px);
             z-index: 1000;
             box-sizing: border-box;
         }
 
-        .logo {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 900;
-            font-size: 1.2rem;
-            color: var(--accent);
-            text-transform: uppercase;
-        }
+        .logo { font-family: 'Montserrat', sans-serif; font-weight: 900; color: var(--accent); }
 
-        .menu-btn {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
+        .nav-controls { display: flex; gap: 15px; align-items: center; }
+
+        .control-btn {
+            background: var(--card);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text);
+            width: 40px; height: 40px;
+            border-radius: 50%;
             cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
         }
 
-        /* Side Navigation (Image 6863.jpg Style) */
-        .side-nav {
-            position: fixed;
-            top: 0; right: -100%;
-            width: 280px; height: 100%;
-            background: #111827;
-            z-index: 2000;
-            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            flex-direction: column;
-            padding: 40px 0;
-            box-shadow: -10px 0 30px rgba(0,0,0,0.5);
-        }
-
-        .side-nav.active { right: 0; }
-
-        .close-nav {
-            position: absolute;
-            top: 20px; right: 25px;
-            font-size: 2rem;
-            cursor: pointer;
-            color: var(--text-dim);
-        }
-
-        .nav-links {
-            margin-top: 60px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dim);
-            font-size: 1.1rem;
-            font-weight: 500;
-            padding: 15px 0;
-            width: 100%;
-            text-align: center;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--accent);
-            background: rgba(56, 189, 248, 0.1);
-        }
-
-        /* Profile Section */
-        .hero {
-            text-align: center;
-            padding: 120px 20px 60px;
-        }
-
+        /* Hero Section */
+        .hero { text-align: center; padding: 120px 20px 40px; }
+        
         .profile-img {
-            width: 140px; height: 140px;
-            border-radius: 40px;
+            width: 130px; height: 130px;
+            border-radius: 35px;
             object-fit: cover;
             border: 4px solid var(--accent);
             transform: rotate(-6deg);
@@ -122,187 +79,165 @@
 
         .name {
             font-family: 'Montserrat', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 900;
-            margin: 20px 0 10px;
-            background: linear-gradient(to right, #38bdf8, #818cf8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 2.2rem; font-weight: 900;
+            margin: 15px 0;
+            text-transform: uppercase;
         }
 
-        /* Contact Section (Image 6864.jpg Style) */
-        .contact-section {
-            padding: 60px 20px;
-            max-width: 600px;
-            margin: 0 auto;
+        /* Typing Animation */
+        .role-box { font-size: 1.1rem; font-weight: 600; margin-bottom: 30px; }
+        .static-txt { color: var(--text); }
+        .dynamic-txt { border-right: 2px solid; padding-left: 5px; }
+
+        /* About Section (Image 6865.jpg Style) */
+        .about-section {
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 20px;
         }
 
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            font-weight: 900;
-            margin-bottom: 40px;
-        }
-
-        .contact-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 30px;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .info-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            color: var(--text-dim);
-            font-size: 0.9rem;
-        }
-
-        .info-item i {
-            width: 35px; height: 35px;
+        .about-header { text-align: center; margin-bottom: 30px; }
+        .badge {
             background: rgba(56, 189, 248, 0.1);
             color: var(--accent);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-        }
-
-        .social-row {
-            display: flex;
-            gap: 12px;
-            margin: 25px 0;
-        }
-
-        .social-circle {
-            width: 40px; height: 40px;
-            background: #1f2937;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-dim);
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .social-circle:hover {
-            background: var(--accent);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        /* Form */
-        .contact-form input, .contact-form textarea {
-            width: 100%;
-            background: #0b1120;
-            border: 1px solid #1f2937;
-            padding: 15px;
-            border-radius: 10px;
-            color: white;
-            margin-bottom: 15px;
-            outline: none;
-            box-sizing: border-box;
-        }
-
-        .submit-btn {
-            background: linear-gradient(to right, #38bdf8, #2563eb);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 30px;
-            font-weight: 700;
-            width: 100%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 40px 20px;
+            padding: 5px 15px;
+            border-radius: 20px;
             font-size: 0.8rem;
-            color: var(--text-dim);
-            border-top: 1px solid #1f2937;
+            text-transform: uppercase;
+            font-weight: 700;
         }
+
+        .about-title { font-family: 'Montserrat', sans-serif; font-size: 2rem; margin: 10px 0; }
+
+        .info-table { width: 100%; border-collapse: collapse; }
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(156, 163, 175, 0.2);
+            font-size: 0.95rem;
+        }
+
+        .info-label { color: var(--dim); display: flex; align-items: center; gap: 10px; font-weight: 600; }
+        .info-value { color: var(--text); font-weight: 500; text-align: right; }
+        .map-link { color: var(--accent); text-decoration: none; font-weight: 700; }
+
+        /* Side Nav */
+        .side-nav {
+            position: fixed; top: 0; right: -100%;
+            width: 260px; height: 100%;
+            background: var(--card);
+            z-index: 2000; transition: 0.4s;
+            display: flex; flex-direction: column; padding: 50px 0;
+        }
+        .side-nav.active { right: 0; }
+        .nav-links a {
+            padding: 15px 40px; text-decoration: none; color: var(--dim); font-weight: 600;
+        }
+        .nav-links a:hover { color: var(--accent); background: rgba(56, 189, 248, 0.1); }
+
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body>
+<body data-theme="dark">
 
     <header>
-        <div class="logo">Ashraful Joy</div>
-        <button class="menu-btn" onclick="toggleMenu()"><i class="fas fa-bars-staggered"></i></button>
+        <div class="logo">ASHRAFUL JOY</div>
+        <div class="nav-controls">
+            <button class="control-btn" id="theme-toggle"><i class="fas fa-moon"></i></button>
+            <button class="control-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+        </div>
     </header>
 
-    <!-- Side Navigation (6863.jpg Style) -->
     <nav class="side-nav" id="sideNav">
-        <span class="close-nav" onclick="toggleMenu()">&times;</span>
+        <div style="text-align: right; padding: 20px;"><i class="fas fa-times" onclick="toggleMenu()" style="cursor:pointer; font-size: 1.5rem;"></i></div>
         <div class="nav-links">
-            <a href="#" class="active" onclick="toggleMenu()">Home</a>
-            <a href="#contact" onclick="toggleMenu()">About</a>
-            <a href="#" onclick="toggleMenu()">Services</a>
-            <a href="#" onclick="toggleMenu()">Projects</a>
-            <a href="#" onclick="toggleMenu()">Posts</a>
-            <a href="#" onclick="toggleMenu()">Tools</a>
-            <a href="#" onclick="toggleMenu()">Contact</a>
+            <a href="#">Home</a>
+            <a href="#about">About Me</a>
+            <a href="#">Services</a>
+            <a href="#">Projects</a>
+            <a href="#">Contact</a>
         </div>
     </nav>
 
     <div class="hero">
         <img src="https://raw.githubusercontent.com/ashrafuljoy62/index.html/WiFu/IMG-20251227-WA0018.jpg" alt="Joy" class="profile-img">
-        <div class="name">Ashraful Joy</div>
-        <p style="color: var(--text-dim);">Firefighter | Developer | Web Designer</p>
-    </div>
-
-    <!-- Contact Section (6864.jpg Style) -->
-    <div class="contact-section" id="contact">
-        <h2 class="section-title">Get In Touch</h2>
-        <div class="contact-card">
-            <h3 style="margin-top: 0; font-size: 1.2rem;">Contact Information</h3>
-            <p style="color: var(--text-dim); font-size: 0.85rem; margin-bottom: 25px;">Feel free to reach out via email or connect with me on social media.</p>
-            
-            <div class="info-item">
-                <i class="fas fa-envelope"></i>
-                <span>ashrafulalamjoy003@gmail.com</span>
-            </div>
-            <div class="info-item">
-                <i class="fas fa-location-dot"></i>
-                <span>Dinajpur, Bangladesh</span>
-            </div>
-
-            <div class="social-row">
-                <a href="https://m.facebook.com/ashrafulalam05" class="social-circle"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://t.me/premium_master_62" class="social-circle"><i class="fab fa-telegram-plane"></i></a>
-                <a href="https://www.instagram.com/firefighter.joy" class="social-circle"><i class="fab fa-instagram"></i></a>
-                <a href="https://github.com/ashrafuljoy62" class="social-circle"><i class="fab fa-github"></i></a>
-                <a href="https://youtube.com/@ashraful_creation" class="social-circle"><i class="fab fa-youtube"></i></a>
-            </div>
-
-            <form class="contact-form">
-                <input type="text" placeholder="Your Name">
-                <input type="email" placeholder="Your Email">
-                <input type="text" placeholder="Subject">
-                <textarea rows="4" placeholder="Your Message"></textarea>
-                <button type="button" class="submit-btn">Send Message <i class="fas fa-paper-plane"></i></button>
-            </form>
+        <div class="name">Ashraful Alam Joy</div>
+        <div class="role-box">
+            <span class="static-txt">I Am A </span>
+            <span class="dynamic-txt" id="type-text"></span>
         </div>
     </div>
 
-    <footer>
-        <p>Crafting digital experiences from Bangladesh.</p>
-        <p>&copy; 2026 Ashraful Joy. All Rights Reserved.</p>
-    </footer>
+    <!-- About Section (Image 6865.jpg Style) -->
+    <section class="about-section" id="about">
+        <div class="about-header">
+            <span class="badge"><i class="fas fa-user"></i> About Me</span>
+            <h2 class="about-title">Know Me Better</h2>
+            <div style="width: 50px; height: 4px; background: var(--accent); margin: 0 auto; border-radius: 2px;"></div>
+        </div>
+
+        <div class="info-table">
+            <div class="info-row">
+                <span class="info-label"><i class="fas fa-id-card"></i> FULL NAME</span>
+                <span class="info-value">Ashraful Alam Joy</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label"><i class="fas fa-birthday-cake"></i> AGE</span>
+                <span class="info-value">23 Years Old</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label"><i class="fas fa-moon"></i> RELIGION</span>
+                <span class="info-value">Islam</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label"><i class="fas fa-briefcase"></i> OCCUPATION</span>
+                <span class="info-value">Government Employee</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label"><i class="fas fa-map-marker-alt"></i> LOCATION</span>
+                <span class="info-value">Dinajpur, BD <a href="https://www.google.com/maps/search/Dinajpur,Bangladesh" class="map-link" target="_blank">Visit on Map <i class="fas fa-external-link-alt" style="font-size: 0.7rem;"></i></a></span>
+            </div>
+        </div>
+    </section>
 
     <script>
-        function toggleMenu() {
-            document.getElementById('sideNav').classList.toggle('active');
+        // Typing Animation
+        const roles = [
+            { text: "Firefighter", color: "#f87171" },
+            { text: "Developer", color: "#60a5fa" },
+            { text: "Web Designer", color: "#34d399" },
+            { text: "Creative Editor", color: "#fbbf24" }
+        ];
+
+        let rIdx = 0, cIdx = 0, isDel = false;
+        const target = document.getElementById("type-text");
+
+        function type() {
+            const current = roles[rIdx];
+            target.style.color = current.color;
+            
+            target.textContent = isDel ? current.text.substring(0, cIdx - 1) : current.text.substring(0, cIdx + 1);
+            cIdx = isDel ? cIdx - 1 : cIdx + 1;
+
+            let speed = isDel ? 60 : 120;
+            if(!isDel && cIdx === current.text.length) { speed = 2000; isDel = true; }
+            else if(isDel && cIdx === 0) { isDel = false; rIdx = (rIdx + 1) % roles.length; speed = 500; }
+
+            setTimeout(type, speed);
         }
+
+        // Theme Toggle
+        const themeBtn = document.getElementById('theme-toggle');
+        themeBtn.onclick = () => {
+            const isDark = document.body.getAttribute('data-theme') === 'dark';
+            document.body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            themeBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        };
+
+        function toggleMenu() { document.getElementById('sideNav').classList.toggle('active'); }
+
+        document.addEventListener("DOMContentLoaded", type);
     </script>
 </body>
 </html>
