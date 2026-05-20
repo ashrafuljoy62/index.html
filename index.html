@@ -57,7 +57,7 @@
             display: flex; align-items: center; justify-content: center;
         }
 
-        /* Side Navigation Styling (Image 6866.jpg reference) */
+        /* Side Navigation Styling */
         .side-nav {
             position: fixed; top: 0; right: -100%;
             width: 280px; height: 100%;
@@ -90,6 +90,33 @@
             color: var(--accent);
             background: rgba(56, 189, 248, 0.08);
             padding-left: 45px;
+        }
+
+        /* Profile Image Styles with Floating Animation */
+        .profile-img-container {
+            text-align: center;
+            padding: 120px 20px 20px;
+        }
+        .profile-img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%; /* একদম গোল করার জন্য */
+            border: 4px solid var(--accent);
+            object-fit: cover;
+            box-shadow: 0 10px 25px rgba(56, 189, 248, 0.2);
+            animation: floatAnimation 3s ease-in-out infinite; /* সবসময় নড়াচড়া করার জন্য */
+        }
+
+        @keyframes floatAnimation {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-10px) rotate(3deg); /* হালকা উপরে উঠবে এবং একটু ঘুরবে */
+            }
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
         }
 
         /* Info Sections Styling */
@@ -146,7 +173,7 @@
         </div>
     </header>
 
-    <!-- Side Navigation (Linked as per your request) -->
+    <!-- Side Navigation -->
     <nav class="side-nav" id="sideNav">
         <div style="text-align: right; padding: 20px;"><i class="fas fa-times" onclick="toggleMenu()" style="cursor:pointer; color: var(--dim); font-size: 1.5rem;"></i></div>
         <div class="nav-links">
@@ -157,9 +184,9 @@
         </div>
     </nav>
 
-    <!-- Hero -->
-    <div style="text-align: center; padding: 120px 20px 20px;">
-        <img src="https://raw.githubusercontent.com/ashrafuljoy62/index.html/WiFu/IMG-20251227-WA0018.jpg" style="width:130px; height:130px; border-radius:35px; border:4px solid var(--accent); transform:rotate(-6deg);" alt="Joy">
+    <!-- Hero Section with Animated Profile Pic -->
+    <div class="profile-img-container">
+        <img src="https://raw.githubusercontent.com/ashrafuljoy62/index.html/WiFu/IMG-20251227-WA0018.jpg" class="profile-img" alt="Joy">
         <h1 style="font-family:'Montserrat'; margin: 20px 0 5px;">Ashraful Alam Joy</h1>
         <p style="color:var(--dim);">Government Employee | Developer</p>
     </div>
