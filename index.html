@@ -294,13 +294,13 @@
                     <p>স্থানীয় ইউনিয়ন বাসিন্দাদের প্রয়োজনীয় তথ্যের জন্য কাস্টম এইচটিএমএল এবং সিএসএস ভিত্তিক ড্যাশবোর্ড।</p>
                     <div class="tags"><span class="tag">HTML5</span><span class="tag">CSS3</span></div>
                 </a>
-            </div>            <form id="my-contact-form" onsubmit="sendContactForm(event)" style="display: flex; flex-direction: column; gap: 15px;">
+                        <form id="my-contact-form" onsubmit="sendContactForm(event)" style="display: flex; flex-direction: column; gap: 15px;">
                 
-                <input type="text" name="name" placeholder="Full Name" required style="width: 100%; background: #0b0f19; border: 1px solid #1e293b; border-radius: 12px; color: #fff; padding: 12px 16px; font-size: 0.95rem; outline: none; box-sizing: border-box; font-family: 'Poppins', sans-serif;">
+                <input type="text" id="form-name" name="name" placeholder="Full Name" required style="width: 100%; background: #0b0f19; border: 1px solid #1e293b; border-radius: 12px; color: #fff; padding: 12px 16px; font-size: 0.95rem; outline: none; box-sizing: border-box; font-family: 'Poppins', sans-serif;">
                 
-                <input type="email" name="email" placeholder="Email Address" required style="width: 100%; background: #0b0f19; border: 1px solid #1e293b; border-radius: 12px; color: #fff; padding: 12px 16px; font-size: 0.95rem; outline: none; box-sizing: border-box; font-family: 'Poppins', sans-serif;">
+                <input type="email" id="form-email" name="email" placeholder="Email Address" required style="width: 100%; background: #0b0f19; border: 1px solid #1e293b; border-radius: 12px; color: #fff; padding: 12px 16px; font-size: 0.95rem; outline: none; box-sizing: border-box; font-family: 'Poppins', sans-serif;">
                 
-                <textarea name="message" rows="4" placeholder="Your Message..." required style="width: 100%; background: #0b0f19; border: 1px solid #1e293b; border-radius: 12px; color: #fff; padding: 12px 16px; font-size: 0.95rem; outline: none; resize: none; box-sizing: border-box; font-family: 'Poppins', sans-serif;"></textarea>
+                <textarea id="form-message" name="message" rows="4" placeholder="Your Message..." required style="width: 100%; background: #0b0f19; border: 1px solid #1e293b; border-radius: 12px; color: #fff; padding: 12px 16px; font-size: 0.95rem; outline: none; resize: none; box-sizing: border-box; font-family: 'Poppins', sans-serif;"></textarea>
                 
                 <button type="submit" id="send-btn" style="width: 100%; background: #38bdf8; border: none; border-radius: 14px; padding: 14px; color: #fff; font-size: 1.05rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.3s; font-family: 'Poppins', sans-serif;" onmouseover="this.style.background='#0ea5e9'; this.style.transform='scale(1.02)';" onmouseout="this.style.background='#38bdf8'; this.style.transform='scale(1)';">
                     <span id="btn-text">Send Message</span> <i class="fas fa-paper-plane" style="font-size: 0.95rem;"></i>
@@ -314,8 +314,19 @@
             event.preventDefault();
             
             const form = document.getElementById('my-contact-form');
+            const nameInput = document.getElementById('form-name');
+            const emailInput = document.getElementById('form-email');
+            const messageInput = document.getElementById('form-message');
+            
             const button = document.getElementById('send-btn');
             const btnText = document.getElementById('btn-text');
+
+            // কোনো বক্সে শুধু স্পেস বা ফাঁকা রাখলে সাবমিট লক করবে
+            if (!nameInput.value.trim() || !emailInput.value.trim() || !messageInput.value.trim()) {
+                alert('Please fill out all fields correctly. Blank inputs are not allowed!');
+                return false;
+            }
+            
             const data = new FormData(form);
             
             btnText.textContent = 'Sending...';
@@ -344,13 +355,6 @@
             });
         }
         </script>
-                
-                <button type="submit" class="send-btn" style="width: 100%; background: #38bdf8; border: none; border-radius: 14px; padding: 14px; color: #fff; font-size: 1.05rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.3s; font-family: 'Poppins', sans-serif;" onmouseover="this.style.background='#0ea5e9'; this.style.transform='scale(1.02)';" onmouseout="this.style.background='#38bdf8'; this.style.transform='scale(1)';">
-                    Send Message <i class="fas fa-paper-plane" style="font-size: 0.95rem;"></i>
-                </button>
-                
-            </form>
-                          </div>
 
         </section>
 
