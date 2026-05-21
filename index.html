@@ -374,10 +374,21 @@
         function toggleMenu() { document.getElementById('sideNav').classList.toggle('active'); }
         
         document.getElementById('theme-toggle').onclick = function() {
-            const isDark = document.body.getAttribute('data-theme') === 'dark';
-            document.body.setAttribute('data-theme', isDark ? 'light' : 'dark');
-            this.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-        };
+    const isDark = document.body.getAttribute('data-theme') === 'dark';
+    document.body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    this.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+};
+
+function handleSubscription(event) {
+    event.preventDefault();
+    const emailInput = document.getElementById('subscriber-email');
+    if(emailInput.value) {
+        alert('Thanks for subscribing!');
+        window.open('https://t.me/premium_master_62', '_blank');
+        emailInput.value = '';
+    }
+    return false;
+}
     </script>
 </body>
 </html>
